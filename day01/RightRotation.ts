@@ -5,7 +5,7 @@ export class RightRotation implements Rotation {
   rotate(position: number): number {
     const newPosition = position + this.length;
     if (newPosition > 100) {
-      return (newPosition - 100);
+      return (newPosition) % 100;
     } else if (newPosition === 100) {
       return 0;
     }

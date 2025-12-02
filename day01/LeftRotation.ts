@@ -7,7 +7,7 @@ export class LeftRotation implements Rotation {
   rotate(position: number): number {
     const newPosition = position - this.length;
     if (newPosition < 0) {
-      return (100 + newPosition);
+      return (100 + newPosition) % 100;
     } else if (newPosition === 100) {
       return 0;
     }
