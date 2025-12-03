@@ -15,4 +15,8 @@ export class SerialRange {
   getInvalidSerials(): Array<Serial> {
     return this.serials.filter(x => !x.isValid());
   }
+
+  getInvalidSerialsWithExtraSillyRule(): Array<Serial> {
+    return this.serials.filter(x => !x.isValidWithExtraSillyRule());
+  }
 }

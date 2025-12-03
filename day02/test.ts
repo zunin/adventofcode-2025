@@ -71,3 +71,7 @@ Deno.test("Sum of serials from example produces 1227775554", () => {
     assertEquals(1227775554, sum);
 });
 
+
+Deno.test("Serial 1212121212 is invalid with extra silly rule", () => {
+    assertEquals(false, new Serial(1212121212).isValidWithExtraSillyRule());
+});
