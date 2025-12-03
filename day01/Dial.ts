@@ -12,7 +12,13 @@ export class Dial {
   }
 
   rotate(rotation: Rotation) {
-    this.position = rotation.rotate(this.position);
+    const nextRotation = rotation.rotate(this.position);
+    this.timesPassedZero += rotation.timesPassedZero(this.position);
+    this.position = nextRotation;
+  }
+
+  getTimesPassedZero(): number {
+    return this.timesPassedZero;
   }
 
   readPosition(): number {
