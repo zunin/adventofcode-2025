@@ -5,4 +5,5 @@ export interface Tile {
   getDiagramRepresentation(): string;
   isPaperRoll(): boolean;
   isAccessible(grid: PaperRollGrid): boolean;
+
 }

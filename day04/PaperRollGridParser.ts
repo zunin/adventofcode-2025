@@ -2,6 +2,7 @@ import { PaperRollTile } from "./PaperRollTile.ts";
 import { EmptyTile } from "./EmptyTile.ts";
 import { Tile } from "./Tile.ts";
 import { PaperRollGrid } from "./PaperRollGrid.ts";
+import { ChangeableTile } from "./ChangableTile.ts";
 
 export class PaperRollGridParser {
   constructor(private input: string) {
@@ -19,12 +20,12 @@ export class PaperRollGridParser {
   }
 
 
-  private characterToTile(character: string, x: number, y: number): Tile {
+  private characterToTile(character: string, x: number, y: number): ChangeableTile {
     switch (character) {
       case ".":
-        return new EmptyTile(x, y);
+        return new ChangeableTile(new EmptyTile());
       case "@":
-        return new PaperRollTile(x, y);
+        return new ChangeableTile(new PaperRollTile(x, y));
       default:
         throw new Error(`'${character}}' is an unknown tile`);
     }

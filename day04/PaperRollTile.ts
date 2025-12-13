@@ -11,12 +11,12 @@ export class PaperRollTile implements Tile {
   getAdjacentPositions(): Array<{x: number, y: number}> {
     return [
       {x: this.x - 1, y: this.y - 1},
-      {x: this.x, y: this.y - 1},
+      {x: this.x,     y: this.y - 1},
       {x: this.x + 1, y: this.y - 1},
       {x: this.x - 1, y: this.y},
       {x: this.x + 1, y: this.y},
       {x: this.x - 1, y: this.y + 1},
-      {x: this.x, y: this.y + 1},
+      {x: this.x,     y: this.y + 1},
       {x: this.x + 1, y: this.y + 1},
     ]
   }

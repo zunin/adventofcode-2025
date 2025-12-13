@@ -6,3 +6,5 @@ const parser = new PaperRollGridParser(textinput);
 const grid = parser.getGrid();
 
 console.log(`${grid.countAccessiblePaperRolls()} rolls of paper can be accessed by a forklift`)
+
+console.log(`${grid.countRemovedPaperRolls()} rolls of paper in total can be removed by the Elves and their forklifts`)

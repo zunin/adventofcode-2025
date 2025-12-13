@@ -3,9 +3,9 @@ import { Tile } from "./Tile.ts";
 
 
 export class EmptyTile implements Tile {
-  constructor(private x: number, private y: number) {}
+  constructor() {}
 
-  isAccessible(grid: PaperRollGrid): boolean {
+  isAccessible(_grid: PaperRollGrid): boolean {
     return false;
   }
   isPaperRoll(): boolean {

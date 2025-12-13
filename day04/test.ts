@@ -47,3 +47,9 @@ Deno.test("Example grid has 13 accessbile paper rolls", () => {
   const grid = parser.getGrid();
   assertEquals(13, grid.countAccessiblePaperRolls());
 });
+
+Deno.test("Example grid has 43 removable paper rolls", () => {
+  const parser = new PaperRollGridParser(exampleDiagram);
+  const grid = parser.getGrid();
+  assertEquals(43, grid.countRemovedPaperRolls());
+});
