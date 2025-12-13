@@ -1,7 +1,11 @@
 import { assertEquals } from "@std/assert/equals";
 import { PaperRollGridParser } from "./PaperRollGridParser.ts";
 
-const exampleDiagram = `
+function trimIndentationAndEmptyLines(input: string) {
+  return input.replaceAll(/([ ])*/g, '').trim(); // remove extra indentation and lines that makes it easier to read
+}
+
+const exampleDiagram = trimIndentationAndEmptyLines(`
     ..@@.@@@@.
     @@@.@.@.@@
     @@@@@.@.@@
@@ -12,7 +16,7 @@ const exampleDiagram = `
     @.@@@.@@@@
     .@@@@@@@@.
     @.@.@@@.@.
-`.replaceAll(/([ ])*/g, '').trim(); // remove extra indentation and lines that makes it easier to read
+`);
 
 
 Deno.test("Grid can recreate output", () => {
@@ -21,3 +25,25 @@ Deno.test("Grid can recreate output", () => {
   assertEquals(exampleDiagram, grid.getDiagram());
 });
 
+Deno.test("Grid can mark accessible paper rolls", () => {
+  const parser = new PaperRollGridParser(exampleDiagram);
+  const grid = parser.getGrid();
+  assertEquals(trimIndentationAndEmptyLines(`
+      ..xx.xx@x.
+      x@@.@.@.@@
+      @@@@@.x.@@
+      @.@@@@..@.
+      x@.@@@@.@x
+      .@@@@@@@.@
+      .@.@.@.@@@
+      x.@@@.@@@@
+      .@@@@@@@@.
+      x.x.@@@.x.
+    `), grid.getAccessibleDiagram());
+});
+
+Deno.test("Example grid has 13 accessbile paper rolls", () => {
+  const parser = new PaperRollGridParser(exampleDiagram);
+  const grid = parser.getGrid();
+  assertEquals(13, grid.countAccessiblePaperRolls());
+});
